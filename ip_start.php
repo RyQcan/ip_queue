@@ -19,7 +19,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
-
+/**获取需要请求的id
+ * @param $conn
+ * @return $id
+ */
 function get_next_id($conn){
     $sql = "SELECT next_id FROM next_id_start";
     $result = $conn->query($sql);
@@ -30,6 +33,11 @@ function get_next_id($conn){
         echo "next_id not exit!";
     }
 }
+
+/**返回ip等数据
+ * @param $conn mysql链接
+ * @param $id
+ */
 function return_ip($conn, $id){
     $sql = "SELECT id, ip, task_start, task_finished FROM iptable WHERE id=$id";
     $result = $conn->query($sql);
@@ -44,6 +52,10 @@ function return_ip($conn, $id){
     }
 }
 
+/**在两个表中更新task_start & next_id_start
+ * @param $conn
+ * @param $id
+ */
 function update($conn, $id){
     if(mysqli_query($conn,"UPDATE iptable SET task_start=1 WHERE id=$id")) //将被获取ip的task_start标志位置1
         echo "<br>set task_start ok";
