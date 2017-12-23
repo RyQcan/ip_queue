@@ -35,7 +35,7 @@ function get_next_id($conn){
 }
 
 /**返回ip等数据
- * @param $conn mysql链接
+ * @param $conn mysql
  * @param $id
  */
 function return_ip($conn, $id){
