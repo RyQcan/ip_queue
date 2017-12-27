@@ -45,7 +45,9 @@ function return_ip($conn, $id){
     if ($result->num_rows > 0) {
         // 输出数据
         $row = $result->fetch_assoc();
-        echo "<br> id: ". $row["id"]. " - ip: ". $row["ip"]. " " . $row["task_start"]. " " . $row["task_finished"];
+        $arr=array('id'=>$row['id'],'ip'=>$row['ip']);
+        echo json_encode($arr);
+//        echo "<br> id: ". $row["id"]. " - ip: ". $row["ip"]. " " . $row["task_start"]. " " . $row["task_finished"];
         //返回被获取的id
     } else {
         echo "0 results";
