@@ -22,10 +22,11 @@ echo "Connected successfully";
 
 $finished_id=$_GET['finished'];
 if($finished_id!=null){
+    echo "<br>".$finished_id.' ';
     if(mysqli_query($conn,"UPDATE iptable SET task_finished=1 WHERE id=$finished_id"))
-        echo json_encode(array($finished_id=> "1"));//ok
+        echo json_encode(array('tag'=> 1));//ok
     else
-        echo json_encode(array($finished_id=> "0"));//failed
+        echo json_encode(array('tag'=> 0));//failed
 }else{
     echo"you should provide a finished id";
 }
